@@ -3,21 +3,22 @@
 	var sleepHrs = 0;
 	var schoolHrs = 0;
 	
-		/*function bubbleSort(a){
+		function bubbleSort(a)
+		{
 			var swapped;
-			do{
+			do {
 				swapped = false;
-				for (i=0; i<a.length-1;i++){
-					if(a[i][1] > a[i+1][1]){
-						var temp = a[i][1];
-						a[i][1] = a[i+1][1];
-						a[i+1][1] = temp;
+				for (var i=0; i < a.length-1; i++) {
+					if (a[i][1] > a[i+1][1]) {
+						var temp = a[i];
+						a[i] = a[i+1];
+						a[i+1] = temp;
 						swapped = true;
 					}
 				}
-				
-			}while(swapped);
-		} */
+			} while (swapped);
+		}
+		
 		function sleepFunc() {
 			sleepHrs = 8;
 			var sleepArray = ["Sleep", sleepHrs.toString()];
@@ -42,11 +43,21 @@
 			}
 		function plan(){
 			document.getElementById('TaskForm').style.visibility = "hidden";
+			//calculating time left in the day
 			hoursLeft = 24 - sleepHrs - schoolHrs;
 			for (i=0; i<allTasks.length; i++){
 				var currentDuration = parseInt(allTasks[i][1]);
 				hoursLeft = hoursLeft - currentDuration;
-				console.log(hoursLeft);
+			}
+			//sorting by priority
+			var p = [[],[],[],[],[]]
+			for (i=0; i<allTasks.length; i++){
+				priority = allTasks[i][2];
+				p[priority-1].push(allTasks[i]);
+			}
+			//sorting by duration
+			for (i=0; i<p.length; i++){
+				bubbleSort(p[i]);
 			}
 			if (hoursLeft < 0){
 				/* button will show up that asks to remove the task for the lowest priority
@@ -55,19 +66,11 @@
 				document.getElementById('RemovePriority').style.visibility = "visible";
 				document.getElementById('LowerSleep').style.visibility = "visible";
 			}
-			/*else{
-				var p = [[],[],[],[],[]]
-				for (i=0; i<allTasks.length; i++){
-					priority = allTasks[i][2];
-					p[priority-1].push(i);
-				}
-				for (i=0; i<p.length; i++){
-					bubbleSort(p[i]);
-					console.log(p);
-				}
-			} */
+			else{
+				//put on schedule
+			}
 		}
-		function remPri(){
+		function remPri(p){
 			var index = 0;
 			var lowestPri = 0;
 			for (i=0; i<allTasks.length; i++){
@@ -83,5 +86,7 @@
 			allTasks.splice(index,1);
 			console.log(">>>>>>>>>>>>>>>>>>");
 			console.log(allTasks);
+			document.getElementById('Plan').style.visibility = "Visible";
+
 		}
 		
