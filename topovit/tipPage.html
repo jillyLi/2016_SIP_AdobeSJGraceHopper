@@ -25,20 +25,22 @@
       padding: 80px 120px;
   }
   .person {
-      border: 10px solid transparent;
+      border: 8px solid transparent;
       margin-bottom: 25px;
-      width: 80%;
-      height: 80%;
-      opacity: 0.7;
+      width: 70%;
+      height: 70%;
+      opacity: 0.9;
   }
   .person:hover {
       border-color: #f1f1f1;
   }
   .carousel-inner img {
-      -webkit-filter: grayscale(90%);
-      filter: grayscale(90%); /* make all photos black and white */
+      /*-webkit-filter: grayscale(40%);  make photos grey-ish*/
+      /*filter: grayscale(40%);  make all photos black and white */
       width: 100%; /* Set width to 100% */
+	
       margin: auto;
+	  
   }
   .carousel-caption h3 {
       color: #fff !important;
@@ -55,11 +57,7 @@
   .bg-1 h3 {color: #fff;}
   
   .bg-1 p {font-style: italic;}
-   .bg-2{
-	background: white;
-	color:black;
    
-   }
    
   .list-group-item:first-child {
       border-top-right-radius: 0;
@@ -170,19 +168,19 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#home">HOME</a></li>
-		<li><a href= "#start">ABOUT US</a></li>
-		<li><a href= "#">PLAN IT</a></li>
+		<li><a href= "#aboutUs">ABOUT US</a></li>
+		<li><a href= "#planIt">PLAN IT</a></li>
 		<li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">More
           <span class="caret"></span></a>
        <!-- <li><a href="#intro">STUDY TIPS</a></li>
 		<li><a href="#sleep">HEALTHY TIPS</a></li>
-        <li><a href="#suggest">SUGGESTION</a></li>-->
+        <li><a href="#suggest">SUGGESTION</a></li>           GWCP          -->
         
           <ul class="dropdown-menu">
-            <li><a href="file:///C:/Users/GWCP/Desktop/studyTips.html">STUDY TIPS</a></li>  
-            <li><a href="file:///C:/Users/GWCP/Desktop/healthyTips.html">HEALTHY TIPS</a></li>
-            <li><a href="file:///C:/Users/GWCP/Desktop/suggestion.html">SUGGESTION</a></li>
+            <li><a href="file:///C:/Users/Jilly%20Li/Desktop/studyTips.html">STUDY TIPS</a></li>  
+            <li><a href="file:///C:/Users/Jilly%20Li/Desktop/healthyTips.html">HEALTHY TIPS</a></li>
+            <li><a href="file:///C:/Users/Jilly%20Li/Desktop/suggestion.html">SUGGESTION</a></li>
           </ul>
         </li>
         <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
@@ -191,7 +189,7 @@
   </div>
 </nav>
 
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
+<div id="myCarousel" class="carousel slide" data-ride="carousel">-->
     <!-- Indicators -->
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -202,7 +200,7 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
       <div class="item active">
-        <img src="bg4.jpg" alt="topovit" width="1200" height="700">
+        <img src="moutainTop.jpg" alt="topovit" >
         <div class="carousel-caption">
           <h3>TOPOVIT </h3>
           <p>GET YOUR LIFE TOGETHER</p>
@@ -210,7 +208,7 @@
       </div>
 
       <div class="item">
-        <img src="bg.jpg" alt="quote" width="1200" height="700">
+        <img src="road.jpg" alt="quote" >
         <div class="carousel-caption">
           <h3>QUOTE OF THE DAY:</h3>
           <p>"Education is our passport to the future, for tomorrow belongs to the people who prepare for it today. -Malcolm X"</p>
@@ -218,13 +216,13 @@
       </div>
     
       <div class="item">
-        <img src="bg1.jpg" alt="instruction" width="1200" height="700">
+        <img src="journey.jpg" alt="instruction" >
         <div class="carousel-caption">
-          <h3>INSTRUCTION</h3>
+          <h3>PLAN IT!</h3>
           <p>GET READY FOR TOPOVIT</p>
         </div>
       </div>
-    </div>
+    </div>-->
 
     <!-- Left and right controls -->
     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
@@ -238,77 +236,103 @@
 </div>
 
 <!-- Intro -->
-<div id="intro" class="container text-center">
+<div id="aboutUs" class="container text-center>
   <h3>ABOUT US</h3>
   <!--<p><em>We love music!</em></p>-->
-  <p>haha</p>
+  <h4> FOUNDERS</h4>
   
-  
-  </div>
-</div>
-
-  
-  
-  
-
-
-  
-  
-  
-  
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">×</button>
-          <h4><span class="glyphicon glyphicon-lock"></span> Tickets</h4>
-        </div>
-        <div class="modal-body">
-          <form role="form">
-            <div class="form-group">
-              <label for="psw"><span class="glyphicon glyphicon-shopping-cart"></span> Tickets, $23 per person</label>
-              <input type="number" class="form-control" id="psw" placeholder="How many?">
-            </div>
-            <div class="form-group">
-              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Send To</label>
-              <input type="text" class="form-control" id="usrname" placeholder="Enter email">
-            </div>
-              <button type="submit" class="btn btn-block">Pay
-                <span class="glyphicon glyphicon-ok"></span>
-              </button>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
-            <span class="glyphicon glyphicon-remove"></span> Cancel
-          </button>
-          <p>Need <a href="#">help?</a></p>
-        </div>
-      </div>
+  <!-- jilly section -->
+  <div class="row">
+  <div class="col-sm-4">
+    <p class="text-center"><strong>Jilly Li</strong></p><br>
+    <a href="#demo" data-toggle="collapse">
+      <img src="jilly.jpg" class="img-circle person" alt="Random Name" height="150" width="100">
+    </a>
+    <div id="demo" class="collapse">
+      <p>job</p>
+      <p>interestings</p>
     </div>
+	<p>"We care about healthy studying environment"</p>
+  </div>
+  
+  <!-- rojeen section-->
+   <div class="col-sm-4">
+    <p class="text-center"><strong>Rojeen Farkhoor</strong></p><br>
+     <a href="#demo2" data-toggle="collapse">
+      <img src="rojeen.jpg" class="img-circle person" alt="Random Name" height="150" width="100">
+    </a>
+    <div id="demo2" class="collapse">
+      <p>Drummer</p>
+      <p>Loves drummin'</p>
+      
+    </div>
+	<p>"We care about healthy studying environment"</p>
+  </div>
+  
+  <!-- alyssa section-->
+  <div class="col-sm-4">
+    <p class="text-center"><strong>Alyssa Lopez</strong></p><br>
+    <a href="#demo3" data-toggle="collapse">
+      <img src="alyssa.jpg" class="img-circle person" alt="Random Name" height="150" width="100">
+    </a>
+    <div id="demo3" class="collapse">
+      <p>Bass player</p>
+      <p>Loves math</p>
+      
+    </div>
+	<p>"We care about healthy studying environment"</p>
+  </div>
+  
+  
+ 
+  
+  <!-- kamilah section-->
+  <div class="col-sm-4">
+    <p class="text-center"><strong>Kamilah Nuria Abdubek</strong></p><br>
+    <a href="#demo4" data-toggle="collapse">
+      <img src="kamilah.jpg" class="img-circle person" alt="Random Name" height="150" width="100">
+    </a>
+    <div id="demo4" class="collapse">
+      <p>Bass player</p>
+      <p>Loves math</p>
+      
+    </div>
+	<p>"We care about healthy studying environment"</p>
+  </div>
+  
+	
+  
+</div>
   </div>
 </div>
+
+  
+  
+  
+
+
+  
+  
+  
+  
+ 
 
 <!-- PLAN IT -->
-<div id="study" class="bg-1">
+<div id="planIt" class="bg-1">
   <div class="container">
+  
     <h3 class="text-center">PLAN IT</h3>
-    <ul>
-	 <li>Study alone</li>
-	 <li>Create your perfect study area</li>
-	 <li>Get out all that you'll need</li>
-	 <li>Make your notes into flash cards</li>
-	 <li>Snack healthy while you study</li>
-	 <li>Narrow your notes down</li>
-	 <li>Don't forget to take small breaks</li>
-	 <li>Quiz yourself</li>
-	 <li>Get a good amount of sleep</li>
-	  
- </ul>
-    
+   
+ 
+	 <p class="text-center"> We will help you to plan your days!</p>
+	 <p class="text-center"> Click "PLAN HERE" to make your days become worthful and memoriable! </p>
+  <div class="text-center">
+  <a href="file:///C:/Users/Jilly%20Li/Desktop/tipPages.html" class="btn btn-info" role="button">PLAN HERE!</a>
+  
+</div>
+
+
+   
     
     
  </div>
@@ -318,5 +342,3 @@
 
 </body>
 </html>
-
-
