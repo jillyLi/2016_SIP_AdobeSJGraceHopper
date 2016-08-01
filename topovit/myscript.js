@@ -1,4 +1,4 @@
-	var allTasks = [];
+	var allTasks = [[],[],[],[],[]];
 	var hoursLeft = 24;
 	var sleepHrs = 0;
 	var schoolHrs = 0;
@@ -35,7 +35,7 @@
 			var duration = document.getElementById("dur");
 			var priority = document.getElementById("pri");
 			var task = [description.value.toString(),duration.value.toString(),priority.value.toString()];
-			allTasks.push(task);			
+			allTasks[parseInt(priority.value.toString()) - 1].push(task);			
 			console.log(allTasks);
 		}
 		function openTask(){
@@ -46,45 +46,36 @@
 			//calculating time left in the day
 			hoursLeft = 24 - sleepHrs - schoolHrs;
 			for (i=0; i<allTasks.length; i++){
-				var currentDuration = parseInt(allTasks[i][1]);
-				hoursLeft = hoursLeft - currentDuration;
-			}
-			//sorting by priority
-			var p = [[],[],[],[],[]]
-			for (i=0; i<allTasks.length; i++){
-				priority = allTasks[i][2];
-				p[priority-1].push(allTasks[i]);
-			}
+				for(j=0; j<allTasks[i].length; j++){
+					var currentDuration = parseInt(allTasks[i][j][1]);
+					hoursLeft = hoursLeft - currentDuration;	
+				}
+				
+			}		
 			//sorting by duration
-			for (i=0; i<p.length; i++){
-				bubbleSort(p[i]);
+			for (i=0; i<allTasks.length; i++){
+				bubbleSort(allTasks[i]);
 			}
 			if (hoursLeft < 0){
 				/* button will show up that asks to remove the task for the lowest priority
 				it will find the item in the allTasks that has the highest value for priority, and delete that item. If hoursLeft is still less than 0,
 				then it will delete the item with the next highest value for priority*/
 				document.getElementById('RemovePriority').style.visibility = "visible";
-				document.getElementById('LowerSleep').style.visibility = "visible";
 			}
 			else{
-				//put on schedule
+				console.log(allTasks);
 			}
 		}
-		function remPri(p){
-			var index = 0;
-			var lowestPri = 0;
-			for (i=0; i<allTasks.length; i++){
-				var currentPriority = parseInt(allTasks[i][2])
-				if (currentPriority > lowestPri){
-					lowestPri = currentPriority;
-					index = i;
-				}
-				else{
-					lowestPri = lowestPri;
+		function remPri(){
+			var removed = false;
+			for(i=allTasks.length-1;i>=0;i--){
+				for(j=allTasks[i].length-1;j>=0;j--){
+					if (removed == false){
+						allTasks[i].splice(j, 1);
+						removed = true;
+					}
 				}
 			}
-			allTasks.splice(index,1);
-			console.log(">>>>>>>>>>>>>>>>>>");
 			console.log(allTasks);
 			document.getElementById('Plan').style.visibility = "Visible";
 
