@@ -1,7 +1,8 @@
 	var allTasks = [[],[],[],[],[]];
-	var hoursLeft = 24;
+	var hoursLeft = 23;
 	var sleepHrs = 0;
 	var schoolHrs = 0;
+	var start = 11;
 	
 		function bubbleSort(a)
 		{
@@ -23,11 +24,13 @@
 			sleepHrs = 8;
 			var sleepArray = ["Sleep", sleepHrs.toString()];
 			console.log(sleepArray);
+			document.getElementById('Sleep').style.visibility = "hidden";
 		}
 		function schoolFunc(){
 			schoolHrs = 7;
 			var schoolArray = ["School", schoolHrs.toString()];
 			console.log(schoolArray);
+			document.getElementById('School').style.visibility = "hidden";
 		}
 		function taskFunc(){	
 			console.log("hello");
@@ -41,21 +44,25 @@
 		function openTask(){
 			document.getElementById('TaskForm').style.visibility = "visible";
 			}
+		
 		function plan(){
+			console.log("HELP");
 			document.getElementById('TaskForm').style.visibility = "hidden";
+			document.getElementById('Task').style.visibility = "hidden";
 			//calculating time left in the day
-			hoursLeft = 24 - sleepHrs - schoolHrs;
+			hoursLeft = 23 - sleepHrs - schoolHrs;
 			for (i=0; i<allTasks.length; i++){
 				for(j=0; j<allTasks[i].length; j++){
 					var currentDuration = parseInt(allTasks[i][j][1]);
 					hoursLeft = hoursLeft - currentDuration;	
 				}
-				
+								
 			}		
 			//sorting by duration
 			for (i=0; i<allTasks.length; i++){
 				bubbleSort(allTasks[i]);
 			}
+			
 			if (hoursLeft < 0){
 				/* button will show up that asks to remove the task for the lowest priority
 				it will find the item in the allTasks that has the highest value for priority, and delete that item. If hoursLeft is still less than 0,
@@ -64,6 +71,7 @@
 			}
 			else{
 				console.log(allTasks);
+				makeCal();
 			}
 		}
 		function remPri(){
@@ -78,6 +86,37 @@
 			}
 			console.log(allTasks);
 			document.getElementById('Plan').style.visibility = "Visible";
-
+			document.getElementById('RemovePriority').style.visibility = "hidden";
 		}
 		
+		function makeCal(){
+			document.getElementById('Table').style.visibility = "visible";
+			var table = document.getElementById("Table");
+			start = (start + sleepHrs + schoolHrs + 1) % 12;
+			console.log(start);
+			for (i=0; i<allTasks.length; i++){
+				for (j=0; j<allTasks[i].length; j++){
+					var row = table.insertRow();
+					var cell1 = row.insertCell(0);
+					var cell2 = row.insertCell(1);
+					var cell3 = row.insertCell(2);
+					var end = (start + parseInt(allTasks[i][j][1]))%12;
+					if(end == 0){
+						end = 12;
+					}
+					if (start == 0){
+						start = 12;
+					}
+					cell1.innerHTML = start.toString() + "-" + end.toString();
+					cell2.innerHTML = allTasks[i][j][0];
+					cell3.innerHTML = allTasks[i][j][1];
+					start = end;
+					}
+			}
+		}
+		
+		/*function bedFunc(){
+			var sleepTime = document.getElementById("bed");
+			start = sleepTime.value;
+			console.log(start);
+		} */
