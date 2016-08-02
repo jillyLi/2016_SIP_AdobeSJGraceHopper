@@ -3,6 +3,8 @@
 	var sleepHrs = 0;
 	var schoolHrs = 0;
 	var start = 11;
+	var startM = "PM";
+	var endM = "PM";
 	var sleepArray = [];
 	var schoolArray = [];
 	
@@ -99,44 +101,76 @@
 			var table = document.getElementById("Table");
 			console.log(start);
 			
+			//sleep
 			var row = table.insertRow();
 			var cell1 = row.insertCell(0);
 			var cell2 = row.insertCell(1);
 			var cell3 = row.insertCell(2);
-			end = (start + sleepHrs)%12;
-			cell1.innerHTML = start.toString() + "-" + end.toString();
+			end = (start + sleepHrs);
+			if(end >= 12){
+				if(endM == "AM"){
+					endM = "PM";
+				}else{
+					endM = "AM";
+				}
+			}
+			end = end % 12;
+			cell1.innerHTML = start.toString() + startM + " - " + end.toString() + endM;
 			cell2.innerHTML = sleepArray[0];
 			cell3.innerHTML = sleepArray[1] + " hr(s)";
 			start = end + 1;
+			startM = endM;
 			
+			//school
 			if (parseInt(sleepArray[1]) > 0){
 			var row2 = table.insertRow();
-			var cell1 = row2.insertCell(0);
+			var cell1= row2.insertCell(0);
 			var cell2 = row2.insertCell(1);
 			var cell3 = row2.insertCell(2);
-			end = (start + schoolHrs)%12;
-			cell1.innerHTML = start.toString() + "-" + end.toString();
+			end = (start + schoolHrs);
+			if(end >= 12){
+				if(endM == "AM"){
+					endM = "PM";
+				}else{
+					endM = "AM";
+				}
+			}
+			end = end % 12;
+			cell1.innerHTML = start.toString() + startM + " - " + end.toString() + endM;
 			cell2.innerHTML = schoolArray[0];
 			cell3.innerHTML = schoolArray[1] + " hr(s)";
 			start = end;
+			startM = endM;
 			}
+			
+			//tasks
 			for (i=0; i<allTasks.length; i++){
 				for (j=0; j<allTasks[i].length; j++){
 					var row3 = table.insertRow();
 					var cell1 = row3.insertCell(0);
 					var cell2 = row3.insertCell(1);
 					var cell3 = row3.insertCell(2);
-					var end = (start + parseInt(allTasks[i][j][1]))%12;
+					var end = (start + parseInt(allTasks[i][j][1]));
+					if(end >= 12){
+						if(endM == "AM"){
+							endM = "PM";
+						}else{
+							endM = "AM";
+						}
+					}
+					end = end % 12;
+					
 					if(end == 0){
 						end = 12;
 					}
 					if (start == 0){
 						start = 12;
 					}
-					cell1.innerHTML = start.toString() + "-" + end.toString();
+					cell1.innerHTML = start.toString()+ startM + " - " + end.toString() + endM;
 					cell2.innerHTML = allTasks[i][j][0];
 					cell3.innerHTML = allTasks[i][j][1] + " hr(s)";
 					start = end;
+					startM = endM;
 					}
 			}
 		}
