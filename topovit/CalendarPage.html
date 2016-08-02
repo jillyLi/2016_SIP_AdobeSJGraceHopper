@@ -292,7 +292,7 @@
 			<label class="control-label col-sm-2" for="Description">Description:</label>
 		<div class="col-sm-10">
 		
-			<input type="description" class="form-control" id="desc" placeholder="Enter a short description (e.g. Math Homework)">
+			<input type="description" class="form-control" id="desc" placeholder="Enter a short description (e.g. Math Homework)"onclick="hide()">
 			
 			</div>
 			</div>
@@ -300,7 +300,7 @@
 		<div class="form-group">
 		<label class="control-label col-sm-2" for="Duration">Duration:</label>
 		<div class="col-sm-10">
-			<input type="duration" class="form-control" id="dur" placeholder="Enter the duration in hours (e.g. 3)">
+			<input type="duration" class="form-control" id="dur" placeholder="Enter the duration in hours (e.g. 3)"onclick="hide()">
 			
 		</div>
 		</div>
@@ -308,7 +308,7 @@
 		<label class="control-label col-sm-2" for="Priority">Priority:</label>
 		<div class="col-sm-10">
 		
-			<input type="priority" class="form-control" id="pri" placeholder="Enter a number between 1 and 5 (1 being the most important and 5 being the least important)">
+			<input type="priority" class="form-control" id="pri" placeholder="Enter a number between 1 and 5 (1 being the most important and 5 being the least important)"onclick="hide()">
 			 
 		</div>
 		
@@ -316,6 +316,7 @@
 	  <div class="form-group"> 
 		<div class="col-sm-offset-2 col-sm-10">
 		  <button type="button" class="btn btn-default" id = "add" onclick = "taskFunc()">Add</button>
+		  <img src="check.jpg" id= "add1" alt="Cinque Terre" width="50" height="50">
 		  <button class="close-icon" type="reset"></button>
 		</div>
 	  </div>
