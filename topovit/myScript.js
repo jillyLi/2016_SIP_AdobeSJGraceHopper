@@ -29,13 +29,11 @@
 		function sleepFunc() {
 			sleepHrs = 8;
 			sleepArray = ["Sleep", sleepHrs.toString()];
-			console.log(sleepArray);
 			document.getElementById("Sleep").disabled = true;
 		}
 		function schoolFunc(){
 			schoolHrs = 7;
 			schoolArray = ["School", schoolHrs.toString()];
-			console.log(schoolArray);
 			document.getElementById("School").disabled = true;
 		}
 		function taskFunc(){	
@@ -45,8 +43,6 @@
 			var priority = document.getElementById("pri");
 			var task = [description.value.toString(),duration.value.toString(),priority.value.toString()];
 			allTasks[parseInt(priority.value.toString()) - 1].push(task);			
-			console.log(allTasks);
-			//document.getElementById("TaskForm").reset();
 		}
 		function openTask(){
 			document.getElementById('TaskForm').style.visibility = "visible";
@@ -79,7 +75,6 @@
 				document.getElementById('RemovePriority').style.visibility = "visible";
 			}
 			else{
-				console.log(allTasks);
 				makeCal();
 			}
 		}
@@ -94,7 +89,6 @@
 					}
 				}
 			}
-			console.log(allTasks);
 			plan();
 			}
 		
@@ -103,7 +97,6 @@
 			document.getElementById('School').style.visibility = "hidden";
 			document.getElementById('Sleep').style.visibility = "hidden";
 			var table = document.getElementById("Table");
-			console.log(start);
 			
 			//sleep
 			var row = table.insertRow();
@@ -183,5 +176,4 @@
 			document.getElementById('Bedtime').style.visibility = "visible";
 			var sleepTime = document.getElementById("enterTime");
 			start = sleepTime.value;
-			console.log(start);
 		}
