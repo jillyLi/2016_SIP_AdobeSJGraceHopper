@@ -23,7 +23,9 @@
 				}
 			} while (swapped);
 		}
-		
+		function hide(){
+			document.getElementById("add1").style.visibility="hidden";
+		}
 		function sleepFunc() {
 			sleepHrs = 8;
 			sleepArray = ["Sleep", sleepHrs.toString()];
@@ -37,6 +39,7 @@
 			document.getElementById("School").disabled = true;
 		}
 		function taskFunc(){	
+			document.getElementById("add1").style.visibility="visible";
 			var description  = document.getElementById("desc");
 			var duration = document.getElementById("dur");
 			var priority = document.getElementById("pri");
@@ -50,6 +53,7 @@
 			}
 		
 		function plan(){
+			document.getElementById("add1").style.visibility="hidden";
 			document.getElementById('TaskForm').style.visibility = "hidden";
 			document.getElementById('Task').style.visibility = "hidden";
 			document.getElementById('Plan').style.visibility = "hidden";
