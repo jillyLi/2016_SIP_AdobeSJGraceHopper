@@ -164,6 +164,10 @@
 			textarea {
 			  resize: none;
 			}
+			table, th, td {
+				border: 1px solid gray;
+				width:100%
+			}
 		</style>
   </head>
   
@@ -200,7 +204,7 @@
             <li><a href="file:///C:/Users/GWCP/Desktop/suggestion.html">SUGGESTION</a></li>
           </ul>
         </li>
- 
+        <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
       </ul>
     </div>
   </div>
@@ -218,6 +222,16 @@
 	<button id = "Sleep" type="button" onclick = "sleepFunc()" class="btn btn-success">+Sleep</button>
 	<button id = "School"type="button" onclick = "schoolFunc()" class="btn btn-success">+School</button>
 	<button id = "Task"  type="button" onclick = "openTask()" class="btn btn-success">+Task</button>
+	
+	<div style="visibility:hidden">
+	<table id = "Table">
+	<tr>
+    	<th>Time</th>
+    	<th>Task</th>
+		<th>Duration</th>
+  	</tr>
+	</table>
+	</div>
 	
 	<div id="TaskForm" style="visibility: hidden">
 	<form class="form-horizontal" role="form">
@@ -245,11 +259,10 @@
 		</div>
 	  </div>
 	</form>
-	<button id = "Plan"type="button" onclick= "plan()" class="btn btn-success">PLAN</button>
+	<button id = "Plan" type="button" onclick= "plan()" class="btn btn-success">PLAN</button>
 	</div>
 	
 	<button id = "RemovePriority" type="button" class="btn btn-success" style="visibility: hidden" onclick = "remPri()">Remove Lowest Priority</button>
-	<button id = "LowerSleep" type="button" class="btn btn-success"style="visibility: hidden">Lower Amount of Sleep</button>
 	<script src = "myscript.js"></script>
 
 	</body>
