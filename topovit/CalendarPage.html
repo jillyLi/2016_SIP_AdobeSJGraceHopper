@@ -2,7 +2,7 @@
 <html>
   <head>
   <meta charset="utf-8">
-  
+
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 		<!-- Latest compiled and minified CSS -->
@@ -209,7 +209,12 @@
 .search-box:not(:valid) ~ .close-icon {
 	display: none;
 }
-			
+
+#add1{
+	visibility:hidden;
+
+
+}
 			
 			
 			
@@ -253,7 +258,6 @@
             <li><a href="file:///C:/Users/GWCP/Desktop/suggestion.html">SUGGESTION</a></li>
           </ul>
         </li>
-        <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
       </ul>
     </div>
   </div>
@@ -264,13 +268,15 @@
 	<div id="study" >
   <div class="container">
   
-	<h3 class="text-center">Calendar</h3>
+	<h3 class="text-center">Calendar
+	<p><a href="file:///C:/Users/GWCP/Desktop/instruction.html" data-toggle="tooltip" title="Instructions"><img  src="question.jpg" calt="Random Name" class="img-rounded" height="40" width="40" align= "right"></a></p> 
+	</h3>
 	
 	
 	
 	<button id = "Sleep" type="button" onclick = "sleepFunc()" class="btn btn-success">+Sleep</button>
 	<button id = "School"type="button" onclick = "schoolFunc()" class="btn btn-success">+School</button>
-	<button id = "Task"  type="button" onclick = "openTask()" class="btn btn-success">+Task</button>
+	<button id = "Task"  type="button" onclick = "openTask()"  class="btn btn-success">+Task</button>
 	
 	<div style="visibility:hidden">
 	<table id = "Table">
@@ -317,7 +323,7 @@
 		<div class="col-sm-offset-2 col-sm-10">
 		  <button type="button" class="btn btn-default" id = "add" onclick = "taskFunc()">Add</button>
 		  <img src="check.jpg" id= "add1" alt="Cinque Terre" width="50" height="50">
-		  <button class="close-icon" type="reset"></button>
+		  <button class="close-icon" type="reset" onclick="hide()"></button>
 		</div>
 	  </div>
 	</form>
@@ -326,7 +332,7 @@
 	
 	<div class="span7 text-center">
 	<button id = "RemovePriority" type="button" class="btn btn-success" style="visibility: hidden" onclick = "remPri()">Remove Lowest Priority</button>
-	<script src = "myscript.js"></script>
+	<script src = "myScript.js"></script>
 	</div>
 
 	</body>
