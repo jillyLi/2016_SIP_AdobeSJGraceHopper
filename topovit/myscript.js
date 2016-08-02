@@ -3,6 +3,8 @@
 	var sleepHrs = 0;
 	var schoolHrs = 0;
 	var start = 11;
+	var sleepArray = [];
+	var schoolArray = [];
 	
 		function bubbleSort(a)
 		{
@@ -22,42 +24,43 @@
 		
 		function sleepFunc() {
 			sleepHrs = 8;
-			var sleepArray = ["Sleep", sleepHrs.toString()];
+			sleepArray = ["Sleep", sleepHrs.toString()];
 			console.log(sleepArray);
-			document.getElementById('Sleep').style.visibility = "hidden";
+			document.getElementById("Sleep").disabled = true;
 		}
 		function schoolFunc(){
 			schoolHrs = 7;
-			var schoolArray = ["School", schoolHrs.toString()];
+			schoolArray = ["School", schoolHrs.toString()];
 			console.log(schoolArray);
-			document.getElementById('School').style.visibility = "hidden";
+			document.getElementById("School").disabled = true;
 		}
 		function taskFunc(){	
-			console.log("hello");
 			var description  = document.getElementById("desc");
 			var duration = document.getElementById("dur");
 			var priority = document.getElementById("pri");
 			var task = [description.value.toString(),duration.value.toString(),priority.value.toString()];
 			allTasks[parseInt(priority.value.toString()) - 1].push(task);			
 			console.log(allTasks);
+			//document.getElementById("TaskForm").reset();
 		}
 		function openTask(){
 			document.getElementById('TaskForm').style.visibility = "visible";
 			}
 		
 		function plan(){
-			console.log("HELP");
 			document.getElementById('TaskForm').style.visibility = "hidden";
 			document.getElementById('Task').style.visibility = "hidden";
+			document.getElementById('Plan').style.visibility = "hidden";
+			
 			//calculating time left in the day
 			hoursLeft = 23 - sleepHrs - schoolHrs;
 			for (i=0; i<allTasks.length; i++){
 				for(j=0; j<allTasks[i].length; j++){
 					var currentDuration = parseInt(allTasks[i][j][1]);
 					hoursLeft = hoursLeft - currentDuration;	
-				}
-								
+				}			
 			}		
+			
 			//sorting by duration
 			for (i=0; i<allTasks.length; i++){
 				bubbleSort(allTasks[i]);
@@ -75,6 +78,7 @@
 			}
 		}
 		function remPri(){
+			document.getElementById('RemovePriority').style.visibility = "hidden";
 			var removed = false;
 			for(i=allTasks.length-1;i>=0;i--){
 				for(j=allTasks[i].length-1;j>=0;j--){
@@ -85,21 +89,43 @@
 				}
 			}
 			console.log(allTasks);
-			document.getElementById('Plan').style.visibility = "Visible";
-			document.getElementById('RemovePriority').style.visibility = "hidden";
-		}
+			plan();
+			}
 		
 		function makeCal(){
 			document.getElementById('Table').style.visibility = "visible";
+			document.getElementById('School').style.visibility = "hidden";
+			document.getElementById('Sleep').style.visibility = "hidden";
 			var table = document.getElementById("Table");
-			start = (start + sleepHrs + schoolHrs + 1) % 12;
 			console.log(start);
+			
+			var row = table.insertRow();
+			var cell1 = row.insertCell(0);
+			var cell2 = row.insertCell(1);
+			var cell3 = row.insertCell(2);
+			end = (start + sleepHrs)%12;
+			cell1.innerHTML = start.toString() + "-" + end.toString();
+			cell2.innerHTML = sleepArray[0];
+			cell3.innerHTML = sleepArray[1] + " hr(s)";
+			start = end + 1;
+			
+			if (parseInt(sleepArray[1]) > 0){
+			var row2 = table.insertRow();
+			var cell1 = row2.insertCell(0);
+			var cell2 = row2.insertCell(1);
+			var cell3 = row2.insertCell(2);
+			end = (start + schoolHrs)%12;
+			cell1.innerHTML = start.toString() + "-" + end.toString();
+			cell2.innerHTML = schoolArray[0];
+			cell3.innerHTML = schoolArray[1] + " hr(s)";
+			start = end;
+			}
 			for (i=0; i<allTasks.length; i++){
 				for (j=0; j<allTasks[i].length; j++){
-					var row = table.insertRow();
-					var cell1 = row.insertCell(0);
-					var cell2 = row.insertCell(1);
-					var cell3 = row.insertCell(2);
+					var row3 = table.insertRow();
+					var cell1 = row3.insertCell(0);
+					var cell2 = row3.insertCell(1);
+					var cell3 = row3.insertCell(2);
 					var end = (start + parseInt(allTasks[i][j][1]))%12;
 					if(end == 0){
 						end = 12;
@@ -109,14 +135,15 @@
 					}
 					cell1.innerHTML = start.toString() + "-" + end.toString();
 					cell2.innerHTML = allTasks[i][j][0];
-					cell3.innerHTML = allTasks[i][j][1];
+					cell3.innerHTML = allTasks[i][j][1] + " hr(s)";
 					start = end;
 					}
 			}
 		}
 		
-		/*function bedFunc(){
-			var sleepTime = document.getElementById("bed");
+		function bedFunc(){
+			document.getElementById('Bedtime').style.visibility = "visible";
+			var sleepTime = document.getElementById("enterTime");
 			start = sleepTime.value;
 			console.log(start);
-		} */
+		}
