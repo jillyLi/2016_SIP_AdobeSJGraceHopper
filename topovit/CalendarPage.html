@@ -173,6 +173,50 @@
 				width:25%;
 				text-align:center;
 			}
+			
+
+
+
+.close-icon {
+	border:1px solid transparent;
+	background-color: transparent;
+	
+	vertical-align: middle;
+  outline: 0;
+  cursor: pointer;
+}
+.close-icon:after {
+	content: "clear";
+	
+	width: 60px;
+	height: 35px;
+	position: absolute;
+	background-color: orange;
+	z-index:1;
+	right: 35px;
+	top: 0;
+	bottom: 3;
+	margin: auto;
+	padding: 2px;
+	border-radius: 50%;
+	text-align: center;
+	color: white;
+	font-weight: normal;
+	font-size: 17px;
+	
+	cursor: pointer;
+}
+.search-box:not(:valid) ~ .close-icon {
+	display: none;
+}
+			
+			
+			
+			
+			
+			
+			
+			
 		</style>
   </head>
   
@@ -239,28 +283,40 @@
 	</div>
 	
 	<div id="TaskForm" style="visibility: hidden">
+	
+	
 	<form class="form-horizontal" role="form">
+	
 		<div class="form-group">
+		<div class="search-wrapper">
 			<label class="control-label col-sm-2" for="Description">Description:</label>
 		<div class="col-sm-10">
+		
 			<input type="description" class="form-control" id="desc" placeholder="Enter a short description (e.g. Math Homework)">
+			
+			</div>
 			</div>
 		</div>
 		<div class="form-group">
 		<label class="control-label col-sm-2" for="Duration">Duration:</label>
 		<div class="col-sm-10">
 			<input type="duration" class="form-control" id="dur" placeholder="Enter the duration in hours (e.g. 3)">
+			
 		</div>
 		</div>
 		<div class="form-group">
 		<label class="control-label col-sm-2" for="Priority">Priority:</label>
-		<div class="col-sm-10"> 
-			<input type="priority" class="form-control" id="pri" placeholder="Enter a number between 1 and 5 (1 being the most important and 5 being the least important)")
+		<div class="col-sm-10">
+		
+			<input type="priority" class="form-control" id="pri" placeholder="Enter a number between 1 and 5 (1 being the most important and 5 being the least important)">
+			 
 		</div>
+		
 		</div>
 	  <div class="form-group"> 
 		<div class="col-sm-offset-2 col-sm-10">
 		  <button type="button" class="btn btn-default" id = "add" onclick = "taskFunc()">Add</button>
+		  <button class="close-icon" type="reset"></button>
 		</div>
 	  </div>
 	</form>
