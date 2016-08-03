@@ -169,7 +169,7 @@
 			var cell1 = row.insertCell(0);
 			var cell2 = row.insertCell(1);
 			var cell3 = row.insertCell(2);
-			end = (start + parseInt(sleepHrs));
+			end = (start%12 + parseInt(sleepHrs));
 			if(end >= 12){
 				if(endM == "AM"){
 					endM = "PM";
@@ -200,27 +200,28 @@
 			var cell1= row2.insertCell(0);
 			var cell2 = row2.insertCell(1);
 			var cell3 = row2.insertCell(2);
-			end = (start + schoolHrs);
+			end = (start%12 + schoolHrs);
 			startM = "AM";
-
-			
-
-			if(end == 0){
-				end = 12;
-			}
-			if (start == 0){
-				start = 12;
-				}
 			
 			if(end >= 12){
 				if(startM == "AM"){
 					endM = "PM";
 				}else{
 					endM = "AM";
-				}
+					}
+			}else{
+				endM = startM;
+			}
+			end = end % 12;
+			
+			if(end == 0){
+				end = 12;
+			}
+	
+			if (start == 0){
+				start = 12;
 			}
 			
-			end = end % 12;
 			cell1.innerHTML = start.toString() + startM + " - " + end.toString() + endM;
 			cell2.innerHTML = schoolArray[0];
 			cell3.innerHTML = schoolArray[1] + " hr(s)";
@@ -235,24 +236,23 @@
 					var cell1 = row3.insertCell(0);
 					var cell2 = row3.insertCell(1);
 					var cell3 = row3.insertCell(2);
-					var end = (start + parseInt(allTasks[i][j][1]));
-
-				if(end == 0){
-					end = 12;
-				}
-				if (start == 0){
-					start = 12;
+					var end = (start%12 + parseInt(allTasks[i][j][1]));
+					
+					if(end >= 12){
+						if(endM == "AM"){
+							endM = "PM";
+						}else{
+							endM = "AM";
+						}
 					}
-				
-				if(end >= 12){
-					if(startM == "AM"){
-						endM = "PM";
-					}else{
-						endM = "AM";
+					end = end % 12;
+					if(end == 0){
+						end = 12;
 					}
-				}
-				end = end % 12;
-
+	
+					if (start == 0){
+						start = 12;
+					}
 					cell1.innerHTML = start.toString()+ startM + " - " + end.toString() + endM;
 					cell2.innerHTML = allTasks[i][j][0];
 					cell3.innerHTML = allTasks[i][j][1] + " hr(s)";
