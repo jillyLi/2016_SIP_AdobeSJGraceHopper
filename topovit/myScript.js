@@ -13,7 +13,7 @@
 	var sleepEnabled = true;
 	var taskEnabled = true;
 	var schoolEnabled = true;
-	
+		
 		function bubbleSort(a)
 		{
 			var swapped;
@@ -56,6 +56,8 @@
 			sleepHrs = sleepHrs.value;
 			bedTime = document.getElementById("bed");
 			bedTime = bedTime.value;
+			startM = document.getElementById("AMorPM");
+			startM = startM.value;
 			sleepArray = ["Sleep",sleepHrs];
 			document.getElementById("Sleep").disabled = true;
 			document.getElementById("SleepForm").style.display = "none";
@@ -171,11 +173,19 @@
 			var cell3 = row.insertCell(2);
 			end = (start%12 + parseInt(sleepHrs));
 			if(end >= 12){
-				if(endM == "AM"){
+				if(startM == "AM"){
 					endM = "PM";
 				}else{
-					endM = "AM";
+				endM = "AM";
 				}
+			}else{
+				if(startM =="AM"){
+					endM="AM";
+							
+				}else{
+					endM="PM";
+				}
+						
 			}
 			end = end % 12;
 			
@@ -261,7 +271,7 @@
 					var end = (start%12 + parseInt(allTasks[i][j][1]));
 					
 					if(end >= 12){
-						if(endM == "AM"){
+						if(startM == "AM"){
 							endM = "PM";
 						}else{
 							endM = "AM";
