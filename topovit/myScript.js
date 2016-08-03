@@ -194,39 +194,61 @@
 			//school
 			
 			if (parseInt(schoolArray[1]) > 0){
-			getReady = schoolTime - start;
-			start = start + getReady;
-			var row2 = table.insertRow();
-			var cell1= row2.insertCell(0);
-			var cell2 = row2.insertCell(1);
-			var cell3 = row2.insertCell(2);
-			end = (start%12 + schoolHrs);
-			startM = "AM";
-			
-			if(end >= 12){
-				if(startM == "AM"){
-					endM = "PM";
+				getReady = schoolTime - start;
+				start = start + getReady;
+				var row2 = table.insertRow();
+				var cell1= row2.insertCell(0);
+				var cell2 = row2.insertCell(1);
+				var cell3 = row2.insertCell(2);
+				end = (start%12 + schoolHrs);
+				startM = "AM";
+				
+				if(end >= 12){
+					if(startM == "AM"){
+						endM = "PM";
+					}else{
+						endM = "AM";
+						}
 				}else{
-					endM = "AM";
-					}
+					endM = startM;
+				}
+				end = end % 12;
+				
+				if(end == 0){
+					end = 12;
+				}
+		
+				if (start == 0){
+					start = 12;
+				}
+				
+				cell1.innerHTML = start.toString() + startM + " - " + end.toString() + endM;
+				cell2.innerHTML = schoolArray[0];
+				cell3.innerHTML = schoolArray[1] + " hr(s)";
+				start = end;
+				startM = endM;
 			}else{
-				endM = startM;
-			}
-			end = end % 12;
-			
-			if(end == 0){
-				end = 12;
-			}
-	
-			if (start == 0){
-				start = 12;
-			}
-			
-			cell1.innerHTML = start.toString() + startM + " - " + end.toString() + endM;
-			cell2.innerHTML = schoolArray[0];
-			cell3.innerHTML = schoolArray[1] + " hr(s)";
-			start = end;
-			startM = endM;
+				end = end +1;
+				start = end;
+				startM = "AM";
+				if(end >= 12){
+					if(startM == "AM"){
+						endM = "PM";
+					}else{
+						endM = "AM";
+						}
+				}else{
+					endM = startM;
+				}
+				end = end % 12;
+				
+				if(end == 0){
+					end = 12;
+				}
+		
+				if (start == 0){
+					start = 12;
+				}
 			}
 			
 			//tasks
