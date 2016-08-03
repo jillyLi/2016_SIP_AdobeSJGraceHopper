@@ -201,8 +201,9 @@
 			var cell2 = row2.insertCell(1);
 			var cell3 = row2.insertCell(2);
 			end = (start + schoolHrs);
+			startM = "AM";
 
-			end = end % 12;
+			
 
 			if(end == 0){
 				end = 12;
@@ -212,12 +213,14 @@
 				}
 			
 			if(end >= 12){
-				if(endM == "AM"){
+				if(startM == "AM"){
 					endM = "PM";
 				}else{
 					endM = "AM";
 				}
 			}
+			
+			end = end % 12;
 			cell1.innerHTML = start.toString() + startM + " - " + end.toString() + endM;
 			cell2.innerHTML = schoolArray[0];
 			cell3.innerHTML = schoolArray[1] + " hr(s)";
@@ -233,7 +236,6 @@
 					var cell2 = row3.insertCell(1);
 					var cell3 = row3.insertCell(2);
 					var end = (start + parseInt(allTasks[i][j][1]));
-				end = end % 12;
 
 				if(end == 0){
 					end = 12;
@@ -243,12 +245,14 @@
 					}
 				
 				if(end >= 12){
-					if(endM == "AM"){
+					if(startM == "AM"){
 						endM = "PM";
 					}else{
 						endM = "AM";
 					}
 				}
+				end = end % 12;
+
 					cell1.innerHTML = start.toString()+ startM + " - " + end.toString() + endM;
 					cell2.innerHTML = allTasks[i][j][0];
 					cell3.innerHTML = allTasks[i][j][1] + " hr(s)";
